@@ -1,6 +1,9 @@
+import ClientOnly from "@/app/components/ClientOnly";
+import MovieFavorites from "@/app/components/MovieFavorites";
 import MovieSwiper from "@/app/components/MovieSwiper";
 import { getMovieDetails, getMovieVideos, getMovieWatchProviders } from "@/lib/tmdb";
 import Link from "next/link";
+
 import { FaArrowLeft } from "react-icons/fa";
 // Swiper client component
 
@@ -22,6 +25,8 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
       </div>
 
       {/* Movie Container */}
+      <ClientOnly>
+
       <div data-aos="zoom-in" className="max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col md:flex-row gap-6">
         {movie.poster_path && (
           <img
@@ -30,9 +35,11 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
             className="w-full md:w-72 object-cover rounded-lg shadow-md"
           />
         )}
-
         <div className="flex-1 flex flex-col">
-          <h1 className="text-2xl sm:text-3xl font-bold mb-2">{movie.title}</h1>
+            <div className="flex items-center justify-between mb-2">
+                 <h1 className="text-2xl sm:text-3xl font-bold">{movie.title}</h1>
+                   <MovieFavorites movie={movie} />
+              </div>
 
           <p className="text-gray-500 dark:text-gray-400 mb-1 text-sm sm:text-base">
             Release: {movie.release_date} | Status: {movie.status}
@@ -65,13 +72,14 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
                   src={`https://www.youtube.com/embed/${trailer.key}`}
                   title="Trailer"
                   allowFullScreen
-                  className="w-full h-full rounded-lg shadow-md"
+                  className=" rounded-lg shadow-md"
                 />
               </div>
             </div>
           )}
         </div>
       </div>
+      </ClientOnly>
 
       {/* Cast */}
       {movie.credits?.cast?.length > 0 && (

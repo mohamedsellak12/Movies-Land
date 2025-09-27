@@ -1,4 +1,5 @@
 import ActorSwiper from "@/app/components/ActorSwiper";
+import ClientOnly from "@/app/components/ClientOnly";
 import { getActorCredits, getActorDetails } from "@/lib/tmdb";
 import Link from "next/link";
 
@@ -20,6 +21,7 @@ export default async function ActorPage({ params }: { params: { id: string } }) 
       </div>
 
       {/* Actor Details */}
+      <ClientOnly>
       <div data-aos="zoom-in" className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col md:flex-row gap-6">
         {actor.profile_path && (
           <img
@@ -43,6 +45,7 @@ export default async function ActorPage({ params }: { params: { id: string } }) 
           </p>
         </div>
       </div>
+      </ClientOnly>
 
       {/* Actor Credits Slider */}
       {credits.cast && credits.cast.length > 0 && (

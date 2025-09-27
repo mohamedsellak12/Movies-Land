@@ -61,7 +61,7 @@ export default function Home() {
       🔥 Trending Movies & TV Shows
     </h1>
 
-    <div  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <div  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
       {filteredResults.map((item) => (
        <Link key={item.id} href={item.media_type==="tv"?`/tv/${item.id}`:`/movie/${item.id}`}>
         <div

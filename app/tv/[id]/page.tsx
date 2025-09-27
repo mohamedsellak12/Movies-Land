@@ -1,7 +1,10 @@
 
 
+import ClientOnly from "@/app/components/ClientOnly";
+import MovieFavorites from "@/app/components/MovieFavorites";
 import SeasonSwiper from "@/app/components/SeasonSwiper";
 import SerieSwiper from "@/app/components/SerieSwiper";
+import TvFavorites from "@/app/components/TvFavorites";
 import { getTVDetails, getTVVideos, getTVWatchProviders } from "@/lib/tmdb";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,6 +35,9 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
       </div>
 
       {/* Serie Container */}
+
+      <ClientOnly>
+
       <div data-aos="zoom-in" className="max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col md:flex-row gap-6">
         {/* Poster */}
         {serie.poster_path && (
@@ -44,8 +50,10 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
 
         {/* Details */}
         <div className="flex-1 flex flex-col">
-          <h1 className="text-2xl sm:text-3xl font-bold mb-2">{serie.name}</h1>
-
+           <div className="flex items-center justify-between mb-2">
+                <h1 className="text-2xl sm:text-3xl font-bold mb-2">{serie.name}</h1>
+                <TvFavorites tv={serie} />
+            </div>
           <p className="text-gray-500 dark:text-gray-400 mb-1 text-sm sm:text-base">
             First Air: {serie.first_air_date}
           </p>
@@ -99,6 +107,7 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
           )}
         </div>
       </div>
+      </ClientOnly>
 
       {/* Cast Slider */}
       {credits?.cast?.length > 0 && (
