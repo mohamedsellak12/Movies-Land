@@ -4,6 +4,7 @@ import { useState } from "react";
 import SearchBar from "./SearchBar";
 import useDarkMode from "../hooks/useDarkMode";
 import { Sun, Moon } from "lucide-react";
+import Link from "next/link";
 
 
 interface NavbarProps {
@@ -37,6 +38,16 @@ export default function Navbar({ onSearch, onFilter }: NavbarProps) {
           {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
         </button>
       </div>
+    <div className="mt-4">
+  <Link
+    href="/actor"
+    className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md 
+               hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 
+               transition-colors duration-300"
+  >
+   Actors
+  </Link>
+</div>
 
       {/* Filters */}
       <div className="flex justify-center md:justify-start gap-2 flex-wrap">

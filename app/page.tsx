@@ -5,6 +5,7 @@ import { getTrendingAll, searchMulti } from "@/lib/tmdb";
 import Navbar from "./components/Navbar";
 import Link from "next/link";
 import Loading from "./loading";
+import { Span } from "next/dist/trace";
 
 interface MediaItem {
   id: number;
@@ -13,12 +14,14 @@ interface MediaItem {
   media_type: "movie" | "tv" | "person";
   poster_path: string | null;
   overview: string;
+  first_air_date?:string,
+  release_date?:string
 }
 
 export default function Home() {
   const [trending, setTrending] = useState<MediaItem[]>([]);
   const [loading, setLoading] = useState(true);
-   const [filter, setFilter] = useState<"all" | "movie" | "tv">("all");
+   const [filter, setFilter] = useState<"all" | "movie" | "tv" >("all");
 
     async function handleSearch(query: string) {
     const data = await searchMulti(query);
@@ -79,10 +82,18 @@ export default function Home() {
 
           <div className="p-3 flex flex-col flex-grow">
             <h2 className="text-sm sm:text-base md:text-lg font-semibold line-clamp-1">
-              {item.title || item.name}
+              {item.title || item.name} 
             </h2>
             <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-              {(item.media_type || "movie").toUpperCase()}
+              {(item.media_type || "movie").toUpperCase()} 
+             <span>
+                {item.media_type === "tv" ? (
+                    <span>  ({item.first_air_date?.slice(0, 4) || "N/A"})</span>
+                    ) : (
+                     <span>  ({item.release_date?.slice(0, 4) || "N/A"})</span>
+                 )}
+                   </span>
+
             </p>
           </div>
         </div>

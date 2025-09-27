@@ -27,11 +27,13 @@ export default function SerieSwiper({ items, type }: SerieSwiperProps) {
       {items.map((item, idx) => (
         <SwiperSlide key={type === "images" ? idx : item.credit_id}>
           {type === "images" ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
-              alt="Backdrop"
-              className="w-full h-40 sm:h-52 object-cover rounded-md"
-            />
+            <Link href={`https://image.tmdb.org/t/p/w500${item.file_path}`}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${item.file_path}`}
+                  alt="Backdrop"
+                  className="w-full h-40 sm:h-52 object-cover rounded-md"
+                />
+            </Link>
           ) : (
             <Link href={`/actor/${item.id}`}>
             <div className="flex flex-col items-center bg-gray-200 dark:bg-gray-700 p-2 rounded-lg shadow-md">

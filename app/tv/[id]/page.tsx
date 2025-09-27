@@ -1,7 +1,9 @@
 
 
+import SeasonSwiper from "@/app/components/SeasonSwiper";
 import SerieSwiper from "@/app/components/SerieSwiper";
 import { getTVDetails, getTVVideos, getTVWatchProviders } from "@/lib/tmdb";
+import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 // import { Swiper, SwiperSlide } from "swiper/react";
@@ -113,6 +115,49 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
           <SerieSwiper items={images.backdrops} type="images" />
         </div>
       )}
+
+      {/* Seasons */}
+
+
+      {
+        serie?.seasons &&(
+            <div className="mt-8 max-w-6xl mx-auto">
+                <SeasonSwiper items={serie.seasons}/>
+            </div>
+        )
+      }
+      
+      {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        {serie.seasons.map((season: any) => (
+          <div
+            key={season.id}
+            className="bg-gray-200 dark:bg-gray-800 p-3 rounded-xl shadow hover:scale-105 transition-transform duration-300"
+          >
+            {season.poster_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w200${season.poster_path}`}
+                alt={season.name}
+                width={200}
+                height={300}
+                className="rounded-lg mb-3 object-cover"
+              />
+            ) : (
+              <div className="w-full h-[300px] bg-gray-400 dark:bg-gray-600 flex items-center justify-center text-sm text-gray-700 dark:text-gray-300 rounded-lg mb-3">
+                No Image
+              </div>
+            )}
+            <p className="text-md font-semibold text-gray-900 dark:text-white">
+              {season.name}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              {season.episode_count} Episodes
+            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Air Date: {season.air_date || "Unknown"}
+            </p>
+          </div>
+        ))}
+      </div> */}
 
       {/* Providers */}
       {usProviders?.flatrate?.length > 0 && (
