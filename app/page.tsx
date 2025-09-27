@@ -53,15 +53,15 @@ export default function Home() {
 
   return (
 
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div  className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
   <Navbar onSearch={handleSearch} onFilter={setFilter} />
 
-  <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <main data-aos="zoom-in" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
     <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-center lg:text-left">
       🔥 Trending Movies & TV Shows
     </h1>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <div  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
       {filteredResults.map((item) => (
        <Link key={item.id} href={item.media_type==="tv"?`/tv/${item.id}`:`/movie/${item.id}`}>
         <div

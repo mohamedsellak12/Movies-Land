@@ -12,17 +12,17 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
   const usProviders = providers.US;
 
   return (
-    <main className="p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-white">
+    <main  className="p-4 sm:p-6 bg-gray-100 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-white">
       {/* Back Link */}
       <div className="mb-4">
        <Link href="/" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline text-sm sm:text-base">
-  <FaArrowLeft className="mr-1" />
+          <FaArrowLeft className="mr-1" />
   
-</Link>
+            </Link>
       </div>
 
       {/* Movie Container */}
-      <div className="max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col md:flex-row gap-6">
+      <div data-aos="zoom-in" className="max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col md:flex-row gap-6">
         {movie.poster_path && (
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

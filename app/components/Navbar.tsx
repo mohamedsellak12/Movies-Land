@@ -22,7 +22,7 @@ export default function Navbar({ onSearch, onFilter }: NavbarProps) {
   };
 
   return (
-   <nav className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white px-4 sm:px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+   <nav data-aos="fade-up" className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white px-4 sm:px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
       {/* Logo */}
       <h1 className="text-2xl font-bold text-center md:text-left">
         <a href="/" className="hover:text-blue-500">🎬 MoviesLand</a>

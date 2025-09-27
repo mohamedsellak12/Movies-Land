@@ -20,7 +20,7 @@ export default async function ActorPage({ params }: { params: { id: string } }) 
       </div>
 
       {/* Actor Details */}
-      <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col md:flex-row gap-6">
+      <div data-aos="zoom-in" className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col md:flex-row gap-6">
         {actor.profile_path && (
           <img
               src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
