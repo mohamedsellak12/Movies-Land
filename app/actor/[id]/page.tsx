@@ -7,7 +7,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 
 interface ActorPageProps {
-  params: Promise<{ id: string }>; // params is now a Promise
+  params: Promise<{ id: number }>; // params is now a Promise
 }
 
 export default async function ActorPage({ params }: ActorPageProps) {
