@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { searchPerson } from "@/lib/tmdb";
 import SearchBar from "../components/SearchBar";
+import ClientOnly from "../components/ClientOnly";
 // import { NextSeo } from "next-seo"; // optional for better SEO
 
 export default function PersonSearch() {
@@ -16,7 +17,9 @@ export default function PersonSearch() {
   return (
     <div className="min-h-screen w-full bg-gray-100 dark:bg-gray-900 p-4 sm:p-6">
       {/* Page Title */}
-      <div className="max-w-6xl mx-auto mb-6">
+      <ClientOnly>
+
+      <div data-aos="fade-down" className="max-w-6xl mx-auto mb-6">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center">
           Search for Actors & Actresses
         </h1>
@@ -24,14 +27,19 @@ export default function PersonSearch() {
           Find your favorite movie and TV stars and see their profiles
         </p>
       </div>
+      </ClientOnly>
 
       {/* Search Bar */}
-      <div className="max-w-6xl mx-auto mb-4">
+      <ClientOnly>
+      <div data-aos="fade-up" className="max-w-6xl mx-auto mb-4">
         <SearchBar onSearch={handleSearch} />
       </div>
+      </ClientOnly>
 
       {/* Results Grid */}
-    <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4">
+      <ClientOnly>
+
+    <div data-aos="zoom-in" className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4">
        {results
     .filter((person) => person.profile_path) // only keep actors with a profile
     .map((person) => (
@@ -49,6 +57,7 @@ export default function PersonSearch() {
       </Link>
     ))}
 </div>
+      </ClientOnly>
 
     </div>
   );

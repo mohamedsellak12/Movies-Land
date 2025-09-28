@@ -100,7 +100,7 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
                   src={`https://www.youtube.com/embed/${trailer.key}`}
                   title="Trailer"
                   allowFullScreen
-                  className="w-full h-full rounded-lg shadow-md"
+                  className=" rounded-lg shadow-md"
                 ></iframe>
               </div>
             </div>

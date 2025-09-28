@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getFavorites, FavoriteItem } from "../utils/favorites";
 import Link from "next/link";
+import ClientOnly from "../components/ClientOnly";
 
 export default function FavoritesPage() {
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
@@ -13,7 +14,9 @@ export default function FavoritesPage() {
 
   return (
     <main className="p-6 min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-  <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center">My Favorites</h1>
+      <ClientOnly>
+           <h1 data-aos="fade-down"  className="text-3xl sm:text-4xl font-bold mb-6 text-center">My Favorites List</h1>
+      </ClientOnly>
   {favorites.length === 0 ? (
     <p className="text-center text-gray-600 dark:text-gray-400 text-lg">
       You don't have any favorites yet.

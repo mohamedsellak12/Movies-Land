@@ -94,8 +94,8 @@ export async function getTVWatchProviders(id: number) {
 }
 
 // ---------------- BOTH (movies + TV) ---------------- //
-export async function getTrendingAll() {
-  const res = await fetch(`${BASE_URL}/trending/all/week?api_key=${API_KEY}`);
+export async function getTrendingAll(page:number =1) {
+  const res = await fetch(`${BASE_URL}/trending/all/week?api_key=${API_KEY}&page=${page}`);
   if (!res.ok) throw new Error("Failed to fetch trending content");
   const data = await res.json();
   return data.results; // includes both movies & TV

@@ -16,16 +16,13 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
   };
 
   return (
-      <form
-      onSubmit={handleSubmit}
-      className="flex gap-2 w-full md:w-auto"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-wrap justify-center md:justify-center gap-2 flex-1">
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search movies..."
-        className="w-full md:w-64 px-3 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Search ..."
+        className="border p-2 text-white rounded w-64"
       />
       <button
         type="submit"
