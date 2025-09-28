@@ -49,6 +49,8 @@ const ActorSwiper: React.FC<ActorSwiperProps> = ({ items }) => {
                   <Image
                     src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
                     alt={item.title || item.name || ""}
+                    width={200}
+                      height={320}
                     className="w-full h-48 object-cover"
                   />
                 ) : (
