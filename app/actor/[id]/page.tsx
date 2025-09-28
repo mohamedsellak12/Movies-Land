@@ -5,7 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 
-export default async function ActorPage({ params }: { params: { id: string } }) {
+
+interface ActorPageProps {
+  params: { id: string };
+}
+
+export default async function ActorPage({ params }: ActorPageProps) {
   const actorId = Number(params.id);
    
   const actor = await getActorDetails(actorId);
