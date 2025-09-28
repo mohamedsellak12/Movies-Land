@@ -77,13 +77,19 @@ interface USProviders {
   flatrate?: WatchProvider[];
 }
 
+interface MoviePageProps {
+  params: Promise<{ id: number }>; // params is now a Promise
+}
+
+
 // -------------------------
 
-export default async function MoviePage({ params }: { params: { id: number } }) {
-  const movie: Movie = await getMovieDetails(Number(params.id));
-  const videos: Video[] = await getMovieVideos(Number(params.id));
+export default async function MoviePage({ params }:  MoviePageProps) {
+    const movieId = Number((await params).id);
+  const movie: Movie = await getMovieDetails(movieId);
+  const videos: Video[] = await getMovieVideos(movieId);
   const trailer = videos.find((v) => v.type === "Trailer" && v.site === "YouTube");
-  const providers: { US: USProviders } = await getMovieWatchProviders(Number(params.id));
+  const providers: { US: USProviders } = await getMovieWatchProviders(movieId);
   const usProviders = providers.US;
 
   return (

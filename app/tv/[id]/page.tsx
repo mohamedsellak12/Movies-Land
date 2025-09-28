@@ -86,14 +86,20 @@ interface Serie {
   seasons: Season[];
 }
 
-export default async function TvPage({ params }: { params: { id: number } }) {
-  const { serie, images, credits }: { serie: Serie; images: { backdrops: Backdrop[] }; credits: Credits } =
-    await getTVDetails(Number(params.id));
+interface TvPageProps {
+  params: Promise<{ id: number }>; // params is now a Promise
+}
 
-  const videos: Video[] = await getTVVideos(Number(params.id));
+
+export default async function TvPage({ params }: TvPageProps) {
+    const tvId = Number((await params).id);
+  const { serie, images, credits }: { serie: Serie; images: { backdrops: Backdrop[] }; credits: Credits } =
+    await getTVDetails(tvId);
+
+  const videos: Video[] = await getTVVideos(tvId);
   const trailer = videos.find((v) => v.type === "Trailer" && v.site === "YouTube");
 
-  const providers: { US: USProviders } = await getTVWatchProviders(Number(params.id));
+  const providers: { US: USProviders } = await getTVWatchProviders(tvId);
   const usProviders = providers.US;
 
   return (
