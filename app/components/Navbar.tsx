@@ -33,7 +33,7 @@ export default function Navbar({ onSearch, onFilter }: NavbarProps) {
       <div className="flex items-center justify-between">
         {/* Logo */}
         <h1 className="text-2xl font-bold">
-          <a href="/" className="hover:text-blue-500">🎬 MoviesLand</a>
+          <Link href="/" className="hover:text-blue-500">🎬 MoviesLand</Link>
         </h1>
 
         {/* Burger Button (hidden on md+) */}

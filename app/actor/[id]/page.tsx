@@ -1,6 +1,7 @@
 import ActorSwiper from "@/app/components/ActorSwiper";
 import ClientOnly from "@/app/components/ClientOnly";
 import { getActorCredits, getActorDetails } from "@/lib/tmdb";
+import Image from "next/image";
 import Link from "next/link";
 
 import { FaArrowLeft } from "react-icons/fa";
@@ -24,9 +25,11 @@ export default async function ActorPage({ params }: { params: { id: string } }) 
       <ClientOnly>
       <div data-aos="zoom-in" className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col md:flex-row gap-6">
         {actor.profile_path && (
-          <img
+          <Image
               src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
                alt={actor.name}
+               width={500}       // required
+                height={750}   
                className="w-32 h-44 sm:w-36 sm:h-48 md:w-40 md:h-56 object-contain  rounded-lg shadow-md"
             />
 

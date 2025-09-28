@@ -4,6 +4,7 @@ import Link from "next/link";
 import { searchPerson } from "@/lib/tmdb";
 import SearchBar from "../components/SearchBar";
 import ClientOnly from "../components/ClientOnly";
+import Image from "next/image";
 // import { NextSeo } from "next-seo"; // optional for better SEO
 
 export default function PersonSearch() {
@@ -45,9 +46,11 @@ export default function PersonSearch() {
     .map((person) => (
       <Link key={person.id} href={`/actor/${person.id}`}>
         <div className="flex flex-col items-center bg-gray-200 dark:bg-gray-800 p-3 rounded-xl shadow-md hover:scale-105 transition-transform duration-300">
-          <img
+          <Image
             src={`https://image.tmdb.org/t/p/w200${person.profile_path}`}
             alt={person.name}
+            width={500}       // required
+            height={750}   
             className="w-28 h-36 sm:w-32 sm:h-40 md:w-36 md:h-44 object-contain rounded-lg mb-2"
           />
           <p className="text-sm sm:text-base font-semibold text-center text-gray-900 dark:text-white">

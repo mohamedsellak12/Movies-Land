@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getFavorites, FavoriteItem } from "../utils/favorites";
 import Link from "next/link";
 import ClientOnly from "../components/ClientOnly";
+import Image from "next/image";
 
 export default function FavoritesPage() {
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
@@ -31,9 +32,11 @@ export default function FavoritesPage() {
           className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center"
         >
           {item.image ? (
-            <img
+            <Image
               src={`https://image.tmdb.org/t/p/w300${item.image}`}
               alt={item.title}
+              width={500}       // required
+              height={750}   
               className="w-full h-60 sm:h-72 md:h-80 object-cover rounded-xl mb-4 transition-transform duration-300 hover:scale-105"
             />
           ) : (

@@ -6,9 +6,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import Image from "next/image";
+
+
+interface MediaItem {
+  id: number;
+  credit_id: string;
+  media_type: "movie" | "tv" | "person";
+  title?: string;
+  name?: string;
+  poster_path?: string | null;
+  character?: string;
+  job?: string;
+}
 
 interface ActorSwiperProps {
-  items: any[]; // Array of movies/TV shows
+  items: MediaItem[]; // Array of movies/TV shows
 }
 
 const ActorSwiper: React.FC<ActorSwiperProps> = ({ items }) => {
@@ -28,14 +41,14 @@ const ActorSwiper: React.FC<ActorSwiperProps> = ({ items }) => {
           1024: { slidesPerView: 5 },
         }}
       >
-        {items.map((item: any) => (
+        {items.map((item) => (
           <SwiperSlide key={item.credit_id}>
             <Link href={item.media_type === "tv" ? `/tv/${item.id}` : `/movie/${item.id}`}>
               <div className="bg-gray-200 dark:bg-gray-700 rounded-lg shadow-md overflow-hidden hover:scale-105 transition-transform">
                 {item.poster_path ? (
-                  <img
+                  <Image
                     src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
-                    alt={item.title || item.name}
+                    alt={item.title || item.name || ""}
                     className="w-full h-48 object-cover"
                   />
                 ) : (

@@ -5,6 +5,7 @@ import { getTrendingAll, searchMulti } from "@/lib/tmdb";
 import Navbar from "./components/Navbar";
 import Link from "next/link";
 import Loading from "./loading";
+import Image from "next/image";
 
 interface MediaItem {
   id: number;
@@ -108,9 +109,11 @@ export default function Home() {
                 className="bg-gray-200 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 flex flex-col"
               >
                 {item.poster_path ? (
-                  <img
+                  <Image
                     src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                    alt={item.title || item.name}
+                    alt={item.title || item.name || "poster"}
+                    width={500}       // required
+                    height={750}   
                     className="w-full h-48 sm:h-64 md:h-72 lg:h-80 object-cover"
                   />
                 ) : (
