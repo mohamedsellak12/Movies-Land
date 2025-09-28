@@ -7,11 +7,11 @@ import { FaArrowLeft } from "react-icons/fa";
 
 
 interface ActorPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>; // params is now a Promise
 }
 
 export default async function ActorPage({ params }: ActorPageProps) {
-  const actorId = Number(params.id);
+  const actorId = Number((await params).id);
    
   const actor = await getActorDetails(actorId);
   const credits = await getActorCredits(actorId);
