@@ -20,7 +20,7 @@ export default function FavoritesPage() {
       </ClientOnly>
   {favorites.length === 0 ? (
     <p className="text-center text-gray-600 dark:text-gray-400 text-lg">
-      You don't have any favorites yet.
+      {"You don't have any favorites yet."}
     </p>
   ) : (
     <div data-aos="zoom-in" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">

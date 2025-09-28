@@ -7,8 +7,13 @@ import ClientOnly from "../components/ClientOnly";
 import Image from "next/image";
 // import { NextSeo } from "next-seo"; // optional for better SEO
 
+interface Person {
+  id: number;
+  name: string;
+  profile_path: string | null;
+}
 export default function PersonSearch() {
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<Person[]>([]);
 
   async function handleSearch(query: string) {
     const data = await searchPerson(query);

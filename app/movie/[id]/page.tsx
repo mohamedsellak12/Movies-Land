@@ -1,4 +1,4 @@
-"use client"; // Only for client-side interactive components
+// "use client"; // Only for client-side interactive components
 
 import ClientOnly from "@/app/components/ClientOnly";
 import MovieFavorites from "@/app/components/MovieFavorites";
