@@ -86,7 +86,7 @@ interface Serie {
   seasons: Season[];
 }
 
-export default async function TvPage({ params }: { params: { id: string } }) {
+export default async function TvPage({ params }: { params: { id: number } }) {
   const { serie, images, credits }: { serie: Serie; images: { backdrops: Backdrop[] }; credits: Credits } =
     await getTVDetails(Number(params.id));
 

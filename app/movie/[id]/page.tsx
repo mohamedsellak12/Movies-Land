@@ -79,7 +79,7 @@ interface USProviders {
 
 // -------------------------
 
-export default async function MoviePage({ params }: { params: { id: string } }) {
+export default async function MoviePage({ params }: { params: { id: number } }) {
   const movie: Movie = await getMovieDetails(Number(params.id));
   const videos: Video[] = await getMovieVideos(Number(params.id));
   const trailer = videos.find((v) => v.type === "Trailer" && v.site === "YouTube");
